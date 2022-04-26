@@ -1,0 +1,55 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    {% load bootstrap5 %} 
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+
+    {% block head %}{% endblock %}
+
+</head>
+<body>
+
+
+    <nav class="navbar {%if not request.user.is_authenticated %} navbar-expand-lg  {% endif %}navbar-light bg-light">
+       <div class = "container-fluid">
+            <a class="navbar-brand" href="/">CrowdSource Delivery</a>
+            {% if not request.user.is_authenticated %}
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item {% if request.GET.next != '/courier/' %} active {% endif %}  " >
+                    <a class="nav-link active" aria-current="page" href="/sign-in/?next=/customer/">Customer</a>
+                </li>
+                <li class="nav-item {% if request.GET.next == '/courier/' %} active {% endif %}  ">
+                    <a class="nav-link active" href="/sign-in/?next=/courier/">Courier</a>
+                </li>
+                </ul>
+            </div>
+        </div>
+        {% else %}
+        <form class = "form-inline">
+            <span class = "mr-4">
+                {{request.user.get_full_name|title }}
+                <a href="/sign-out" class = "btn btn-primary"> Sign Out</a>
+            </span>
+        </form>
+        {% endif %}
+    </nav>
+      
+{% block content %} {% endblock %}
+
+
+    <footer class="text-center mt-5 mb-5">
+        &copy; TEAM 12
+    </footer>
+
+</body>
+</html>
