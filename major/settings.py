@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'core',
+    # 'core',
+    'core.apps.CoreConfig',
     'bootstrap5',
 ]
 
@@ -122,3 +123,11 @@ USE_TZ = True
 STATIC_URL = '/static/'
 LOGIN_URL = '/sign-in'
 LOGIN_REDIRECT_URL = '/'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = '18211a0556@bvrit.ac.in'
+EMAIL_HOST_PASSWORD = 'rupesh4301@'
+DEFAULT_FROM_EMAIL = 'Crowd Source <no-reply@fastparcel.localhost>'
