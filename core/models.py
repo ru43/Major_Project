@@ -11,18 +11,19 @@ class Customer(models.Model):
   stripe_customer_id = models.CharField(max_length=255, blank=True)
   stripe_payment_method_id = models.CharField(max_length=255, blank=True)
   stripe_card_last4 = models.CharField(max_length=255, blank=True)
- 
+
   def __str__(self):
     return self.user.get_full_name()
-# class Courier(models.Model):
-#   user = models.OneToOneField(User, on_delete=models.CASCADE)
-#   lat = models.FloatField(default=0)
-#   lng = models.FloatField(default=0)
-#   paypal_email = models.EmailField(max_length=255, blank=True)
-#   fcm_token = models.TextField(blank=True)
 
-#   def __str__(self):
-#     return self.user.get_full_name()
+class Courier(models.Model):
+  user = models.OneToOneField(User, on_delete=models.CASCADE)
+  lat = models.FloatField(default=0)
+  lng = models.FloatField(default=0)
+  paypal_email = models.EmailField(max_length=255, blank=True)
+  fcm_token = models.TextField(blank=True)
+
+  def __str__(self):
+    return self.user.get_full_name()
 
 class Category(models.Model):
   slug = models.CharField(max_length=255, unique=True)
@@ -59,7 +60,7 @@ class Job(models.Model):
   # Step 1
   id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
   customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
-  # courier = models.ForeignKey(Courier, on_delete=models.CASCADE, null=True, blank=True)
+  courier = models.ForeignKey(Courier, on_delete=models.CASCADE, null=True, blank=True)
   name = models.CharField(max_length=255)
   description = models.CharField(max_length=255)
   category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True, blank=True)
@@ -114,3 +115,8 @@ class Transaction(models.Model):
 
   def __str__(self):
     return self.stripe_payment_intent_id
+
+
+
+
+
