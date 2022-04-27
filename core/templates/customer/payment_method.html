@@ -54,7 +54,7 @@
       <div class="input-group-append">
         <form method="POST">
           {% csrf_token %}
-          <button type="submit" class="btn btn-primary">Remove</button>
+          <button type="submit" class="btn btn-danger">Remove</button>
         </form>
       </div>
     </div>
@@ -72,7 +72,7 @@
 </div>
 
 {% if not request.user.customer.stripe_payment_method_id %}
-<script>
+<script> 
   var stripe = Stripe("{{ STRIPE_API_PUBLIC_KEY }}");
 
   var elements = stripe.elements();

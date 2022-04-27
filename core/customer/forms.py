@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User
 
-from core.models import Customer
+from core.models import Customer, Job
 
 class BasicUserForm(forms.ModelForm):
   class Meta:
@@ -13,10 +13,10 @@ class BasicCustomerForm(forms.ModelForm):
     model = Customer
     fields = ('avatar',)
 
-# class JobCreateStep1Form(forms.ModelForm):
-#   class Meta:
-#     model = Job
-#     fields = ('name', 'description', 'category', 'size', 'quantity', 'photo')
+class JobCreateStep1Form(forms.ModelForm):
+  class Meta:
+    model = Job
+    fields = ('name', 'description', 'category', 'size', 'quantity', 'photo')
 
 # class JobCreateStep2Form(forms.ModelForm):
 #   pickup_address = forms.CharField(required=True)
