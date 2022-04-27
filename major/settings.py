@@ -132,8 +132,8 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
-EMAIL_HOST_USER = '18211a0556@bvrit.ac.in'
-EMAIL_HOST_PASSWORD = 'rupesh4301@'
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
 DEFAULT_FROM_EMAIL = 'Crowd Source <no-reply@crowdSourced.localhost>'
 
 FIREBASE_ADMIN_CREDENTIAL = os.path.join(BASE_DIR,"crowdsourced-del-firebase-adminsdk-u1wup-626252dbd2.json")
