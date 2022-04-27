@@ -281,8 +281,8 @@ def create_job_page(request):
 #         "jobs": jobs
 #     })
 
-# @login_required(login_url="/sign-in/?next=/customer/")
-# def job_page(request, job_id):
+@login_required(login_url="/sign-in/?next=/customer/")
+def job_page(request, job_id):
     job = Job.objects.get(id=job_id)
 
     if request.method == "POST" and job.status == Job.PROCESSING_STATUS:
