@@ -134,3 +134,8 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = ''
 EMAIL_HOST_PASSWORD = ''
 DEFAULT_FROM_EMAIL = 'Crowd Source <no-reply@fastparcel.localhost>'
+
+FIREBASE_ADMIN_CREDENTIAL = os.path.join(BASE_DIR,"crowdsourced-del-firebase-adminsdk-u1wup-626252dbd2.json")
+
+STRIPE_API_PUBLIC_KEY = "pk_test_51Kt3bASCgT2EgJVqzbUUu0Iuj6M9ofZx0GMdOKLVPs9O0uaEZmZJqrzWm8xl5mPgIU4QlWflRxuFQTgfnXrSz8Wr003PUS182x"
+STRIPE_API_SECRET_KEY = "sk_test_51Kt3bASCgT2EgJVqSXO6F3Uex4p6R6N9FoT4APVOn9FwtXo62U7lwB7dwXcAlb91m4vrugRloFdRxMaLDByPKxO900Gbq9D6SS"
