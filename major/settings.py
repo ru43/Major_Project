@@ -25,7 +25,7 @@ SECRET_KEY = 'fb-h#zj_u7d_spmj3k0ti8fj+rcis0(0&1vjzsj15kmp*bh3c_'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*',]
 
 
 # Application definition
@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     # 'core',
     'core.apps.CoreConfig',
     'bootstrap5',
+    'channels',
 ]
 
 MIDDLEWARE = [
@@ -131,9 +132,9 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
-EMAIL_HOST_USER = ''
-EMAIL_HOST_PASSWORD = ''
-DEFAULT_FROM_EMAIL = 'Crowd Source <no-reply@fastparcel.localhost>'
+EMAIL_HOST_USER = '18211a0556@bvrit.ac.in'
+EMAIL_HOST_PASSWORD = 'rupesh4301@'
+DEFAULT_FROM_EMAIL = 'Crowd Source <no-reply@crowdSourced.localhost>'
 
 FIREBASE_ADMIN_CREDENTIAL = os.path.join(BASE_DIR,"crowdsourced-del-firebase-adminsdk-u1wup-626252dbd2.json")
 
@@ -141,3 +142,12 @@ STRIPE_API_PUBLIC_KEY = "pk_test_51Kt3bASCgT2EgJVqzbUUu0Iuj6M9ofZx0GMdOKLVPs9O0u
 STRIPE_API_SECRET_KEY = "sk_test_51Kt3bASCgT2EgJVqSXO6F3Uex4p6R6N9FoT4APVOn9FwtXo62U7lwB7dwXcAlb91m4vrugRloFdRxMaLDByPKxO900Gbq9D6SS"
 
 GOOGLE_MAP_API_KEY = "AIzaSyDz57vYS5YvYRK09PSOf4BildwK06HYHVk"
+PAYPAL_MODE = "sandbox"
+PAYPAL_CLIENT_ID = "AVJ98rT_DLhjqbVnyh6UAKUQ08GT4zZ_hqyIYLE5hkzlTJWpqleSosc1VXbTKQuW3jd_lC3uHkj-zuSe"
+PAYPAL_CLIENT_SECRET = "EJdP-vTuZavitcWuskgRRVIP6OKckhvymnaKRsuaX88Sse0mBZRmFEdql0I3OP2gz-S6NAMluraZEs3y"
+
+NOTIFICATION_URL = "https://crowdsourceddelivery.herokuapp.com/"
+ASGI_APPLICATION = "major.asgi.application"
+
+import django_on_heroku
+django_on_heroku.settings(locals())
