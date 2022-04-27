@@ -173,7 +173,7 @@ def create_job_page(request):
                     duration = r.json()['rows'][0]['elements'][0]['duration']['value']
                     creating_job.distance = round(distance / 1000, 2)
                     creating_job.duration = int(duration / 60)
-                    creating_job.price = creating_job.distance * 1 # $1 per km
+                    creating_job.price = creating_job.distance * 1.5 # $1.5 per km
                     creating_job.save()
 
                 except Exception as e:
@@ -253,34 +253,34 @@ def create_job_page(request):
         "GOOGLE_MAP_API_KEY": settings.GOOGLE_MAP_API_KEY
     })
 
-# @login_required(login_url="/sign-in/?next=/customer/")
-# def current_jobs_page(request):
-#     jobs = Job.objects.filter(
-#         customer=request.user.customer,
-#         status__in=[
-#             Job.PROCESSING_STATUS,
-#             Job.PICKING_STATUS,
-#             Job.DELIVERING_STATUS
-#         ]
-#     )
+@login_required(login_url="/sign-in/?next=/customer/")
+def current_jobs_page(request):
+    jobs = Job.objects.filter(
+        customer=request.user.customer,
+        status__in=[
+            Job.PROCESSING_STATUS,
+            Job.PICKING_STATUS,
+            Job.DELIVERING_STATUS
+        ]
+    )
 
-#     return render(request, 'customer/jobs.html', {
-#         "jobs": jobs
-#     })
+    return render(request, 'customer/jobs.html', {
+        "jobs": jobs
+    })
 
-# @login_required(login_url="/sign-in/?next=/customer/")
-# def archived_jobs_page(request):
-#     jobs = Job.objects.filter(
-#         customer=request.user.customer,
-#         status__in=[
-#             Job.COMPLETED_STATUS,
-#             Job.CANCELED_STATUS
-#         ]
-#     )
+@login_required(login_url="/sign-in/?next=/customer/")
+def archived_jobs_page(request):
+    jobs = Job.objects.filter(
+        customer=request.user.customer,
+        status__in=[
+            Job.COMPLETED_STATUS,
+            Job.CANCELED_STATUS
+        ]
+    )
 
-#     return render(request, 'customer/jobs.html', {
-#         "jobs": jobs
-#     })
+    return render(request, 'customer/jobs.html', {
+        "jobs": jobs
+    })
 
 @login_required(login_url="/sign-in/?next=/customer/")
 def job_page(request, job_id):
